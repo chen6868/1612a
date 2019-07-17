@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<script src="__PUBLIC__/jquery-3.1.1.min.js"></script>
+	<title>展示</title>
+</head>
+<body>
+	<center>
+		<table border="1">
+			<tr>
+				<td>序号</td>
+				<td>名字</td>
+				<td>性别</td>
+				<td>年龄</td>
+				<td>操作</td>
+			</tr>
+			<tbody id="tbody">
+		<volist name="data" id="vo">
+			<tr>
+				<td>{$vo.id}</td>
+				<eq name="ji" value="true">
+				<td><span class="ji" id="{$vo.id}">{$vo.name}</span></td>
+				<else/>
+				<td>{$vo.name}</td>
+				</eq>
+				<td>{$vo.sex}</td>
+				<td>{$vo.age}</td>
+				<eq name="del" value="true">
+				<td><button class="del" id="{$vo.id}">删除</button></td>
+				<else/>
+				<td>查看</td>
+				</eq>
+			</tr>
+		</volist></tbody>
+		</table>
+		<button class="page" page="1">首页</button><button class="page" page="{$page.up}" id="up">上页</button>
+		<button class="page" page="{$page.down}" id="down">下页</button><button class="page" page="{$page.last}">尾页</button>
+	</center>
+	<script>
+        $(document).on('dblclick','span',function(){
+        	 name = $(this).text();
+        	 id   = $(this).attr("id");
+        	 $(this).replaceWith('<input type="text" class="dian" value="'+name+'" id="'+id+'">');
+        })
+        $(document).on('blur','.dian',function(){
+        	name = $(this).val();
+        	id   = $(this).attr("id");
+        	_this=$(this);
+        	$.get('__URL__/ji',{name:name,id:id},function(){
+        		_this.replaceWith('<span class="ji" id="'+id+'">'+name+'</span>')
+        	})
+        })
+
+        $(document).on('click','.del',function(){
+        	id = $(this).attr('id');
+        	$.get('__URL__/del',{id:id},function(arr){
+                data=arr.data;
+                page=arr.page;
+                str='';
+                $.each(data,function(k,v){
+                	str+='<tr><td>'+v['id']+'</td><eq name="ji" value="true"><td><span class="ji" id="'+v['id']+'">'+v['name']+'</span></td><else/><td>'+v['name']+'</td></eq><td>'+v['sex']+'</td><td>'+v['age']+'</td><eq name="del" value="true"><td><button class="del" id="'+v['id']+'">删除</button></td><else/><td>查看</td></eq></tr>';
+                })
+                $('#up').attr('page',page['up']);
+                $('#down').attr('page',page['down']);
+                $('#tbody').empty().append(str);
+        	},'json') 
+        })
+        $(document).on('click','.page',function(){
+        	p =$(this).attr("page");
+
+        	$.get('__URL__/page',{p:p},function(arr){
+                data=arr.data;
+                page=arr.page;
+                str='';
+                $.each(data,function(k,v){
+                	str+='<tr><td>'+v['id']+'</td><eq name="ji" value="true"><td><span class="ji" id="'+v['id']+'">'+v['name']+'</span></td><else/><td>'+v['name']+'</td></eq><td>'+v['sex']+'</td><td>'+v['age']+'</td><eq name="del" value="true"><td><button class="del" id="'+v['id']+'">删除</button></td><else/><td>查看</td></eq></tr>';
+                })
+                $('#up').attr('page',page['up']);
+                $('#down').attr('page',page['down']);
+                $('#tbody').empty().append(str);
+        	},'json')
+        })
+	</script>
+</body>
+</html>
