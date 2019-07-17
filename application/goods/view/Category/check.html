@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>查看商品分类</title>
+</head>
+<body>
+<center>
+    <h1>查看商品分类</h1>
+    <hr>
+    <table border="1 px solid black">
+        <thead>
+            <tr>
+                <th>商品分类</th>
+            </tr>
+        </thead>
+        {volist name="data" id="s"}
+        <tr>
+            <td>{$s.name}</td>
+        </tr>
+        {/volist}
+    </table>
+    <br>
+    <select>
+        {volist name="data" id="s"}
+        <option value ="{$s.id}">{$s.name}</option>
+        {/volist}
+    </select>
+</center>
+</body>
+</html>

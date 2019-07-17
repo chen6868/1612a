@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>添加商品规格</title>
+</head>
+<body>
+<center>
+    <h1>添加商品规格</h1>
+    <hr>
+    <form action="add" method="post">
+        商品规格名称:<input type="text" name="goods">
+        <br>
+        <select name="g_id">
+            {volist name="goods" id="s"}
+            <option value ="{$s.id}">{$s.name}</option>
+            {/volist}
+        </select>
+        <input type="submit" value="提交">
+    </form>
+</center>
+</body>
+</html>

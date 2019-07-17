@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>test</title>
+    <script src="/js/jquery.min.js"></script>
+</head>
+<body>
+
+搜索关键字:<input type="text" name="name" id="search" value="商品">
+<input type="button" value="搜索" id="button">
+
+<hr>
+<table border="1 px solid black">
+    <thead>
+        <th>商品ID</th>
+        <th>商品分类</th>
+        <th>商品名称</th>
+    </thead>
+    <tbody id="tbody">
+    {volist name='data' id='goods'}
+        <tr>
+            <td>{$goods.id}</td>
+            <td>{$goods.c_id}</td>
+            <td>{$goods.name}</td>
+        </tr>
+    {/volist}
+    </tbody>
+</table>
+</body>
+<script>
+        $(document).on('click','#button',function () {
+            var search = $('#search').val();
+            $.ajax({
+                url: "/index/index/search",
+                type: 'post',
+                data:{search:search},
+
+                success: function(html){
+                    console.log(html);
+                    $('#tbody').empty();
+                    $('#tbody').html(html);
+                }
+            });
+        });
+</script>
+</html>

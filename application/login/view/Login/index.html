@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="/js/jquery.min.js" type="text/javascript" charset="utf-8"></script>
+    <style type="text/css">
+        body,html{
+            padding: 0px;
+            margin: 0px;
+        }
+        .header {
+            width: 100%;
+            padding: 0px;
+            margin: 0px;
+            background-color: #699C03;
+        }
+
+        .header-nav {
+            min-width: 1170px;
+
+            height: 50px;
+            line-height: 50px;
+        }
+
+        .header-nav-left {
+            float: left;
+            padding-left: 150px;
+            margin-top: 10px;
+        }
+
+        .header-nav-left h3 {
+            font-size: 18px;
+            line-height: 25px;
+            margin: 0px;
+            color: #fff;
+        }
+
+        .header-nav-right {
+            float: right;
+            width: 59.9999%;
+            position: relative;
+            height: 50px;
+        }
+
+        .header-nav-right ul {
+            padding: 0px;
+            margin: 0px;
+            list-style: none;
+            position: absolute;
+            right: 25px;
+        }
+
+        .header-nav-right ul li {
+            float: left;
+            margin-left: 5px;
+            color: #fff;
+        }
+
+        .header-nav-right ul li a {
+            color: #fff;
+            text-decoration: none;
+
+        }
+        .user{
+            min-width:980px;
+            text-align: center;
+            margin: 0px;
+            padding: 0px;
+            position: relative;
+        }
+        .user-list{
+            width:470px;
+            height: 250px;
+            padding: 15px;
+            margin: 20px auto;
+            position: relative;
+            border: 1px solid #DBDBDB;
+        }
+        .user-list ul{
+            list-style: none;
+            width: 100%;
+            overflow: hidden;
+            height: 250px;
+            position: relative;
+            padding: 10px 0px;
+            margin: 0px;
+        }
+        .user-list ul li{
+            width: 100%;
+            list-style: none;
+            margin-bottom:15px;
+        }
+        .user-list ul li i{
+            color: red;
+        }
+        .user-list ul li label{
+            display: inline-block;
+            width:12%;
+            text-align: right;
+            font-size:16px;
+            margin-right: 10px;
+            font-family: "微软雅黑";
+
+        }
+        .user-list ul li input{
+            display: inline-block;
+            border: 1px solid #DBDBDB;
+            border-radius:4px;
+            -webkit-border-radius: 4px;
+            -moz-border-radius: 4px;
+            -ms-border-radius:4px;
+            height: 30px;
+            padding: 2px 5px;
+            vertical-align:middle;
+        }
+        .buttons{
+            width: 100%;
+            height:35px;
+            padding: 5px 10px;
+            position: absolute;
+            bottom: 40px;
+            left: 0px;
+            right: 0px;
+        }
+        .openbutton,.onbutton{
+            display: inline-block;
+            width: 40%;
+        }
+        .buttons button{
+            width: 90%;
+            color: #fff;
+            padding: 5px 10px;
+            background-color: #4CB0F9;
+            border: 1px solid #4CB0F9;
+            border-radius: 4px;
+            vertical-align: middle;
+            height: 35px;
+            line-height: 25px;
+            cursor:pointer;
+        }
+        #form2{
+            display: none;
+        }
+    </style>
+</head>
+<body>
+<div class="header">
+    <div class="header-nav">
+        <div class="header-nav-left">
+            <h3>网站后台管理</h3>
+        </div>
+        <div class="header-nav-right">
+            <ul>
+                <li><span>欢迎到来到网站后台</span></li>
+                <li><a href="" onclick="window.location.reload()">主菜单</a></li>
+                <li><a href="">网站首页</a></li>
+
+                <li><a href="Index.html">后台主页</a></li>
+                <li><a href="">内容管理</a></li>
+                <li><a href="">退出</a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+<div class="user">
+    <div class="user-list">
+        <form id="form1" action="" method="post">
+            <ul>
+                <li><label>用户名</label><input type="text" name="username" id="username" placeholder="手机号码或邮箱"/></li>
+                <li><label>密码</label><input type="password" name="pass" id="pass" placeholder="6-15位密码" /></li>
+                <div class="buttons">
+                    <a class="onbutton"><button type="submit" id="onsubmit">登录</button></a>
+                    <a class="openbutton"><button type="submit" id="getform2">注册</button></a>
+                </div>
+            </ul>
+        </form>
+        <form id="form2" action="" method="post">
+            <ul>
+                <li><label>用户名</label><input type="text" name="username" id="getusername" placeholder="手机号码或邮箱"/><i>*</i></li>
+                <li><label>密码</label><input type="password" name="pass" id="getpass" placeholder="6-15位密码" /><i>*</i></li>
+                <div class="buttons">
+                    <a class="getbutton"><button type="submit" id="getsubmit">提交注册信息</button></a>
+                    <p>已有账号立即<a href="#" id="getform1">登录</a></p>
+                </div>
+            </ul>
+        </form>
+    </div>
+</div>
+<script type="text/javascript">
+    $(function(){
+        $(".onbutton #onsubmit").on('click',function(){
+            var $username = $("#username").val(),
+                $pass  = $("#pass").val();
+            if($username=='' || $pass==''){
+                alert("用户名及密码不能为空");
+                return false;
+            }else{
+                var datas={
+                    username:$username,
+                    pass:$pass
+                };
+                $.ajax({
+                    url:'user',
+                    type:'post',
+                    dataType:'json',
+                    data:datas,
+                    success:function(result){
+                        if(result=='nameerror'){
+                            alert('用户名不存在');
+                        }else if(result=="passerror"){
+                            alert("密码错误");
+                        }else{
+                            alert(result);
+                            window.location.href = 'http://www.sogou.com';//登录成功跳转
+                        }
+                    },
+                    error:function(){
+                        alert('false');
+                    }
+                })
+            }return false;
+        });
+        $("#getsubmit").click(function(){
+            var $username = $("#getusername").val(),
+                $pass  = $("#getpass").val();
+            if($username=='' || $pass==''){
+                alert("用户名及密码不能为空");
+                return false;
+            }else{
+                var datas={
+                    username:$username,
+                    pass:$pass
+                }
+                $.ajax({
+                    url:'adduser.php',
+                    type:'post',
+                    data:datas,
+                    dataType:'json',
+                    success:function(reslut){
+                        if(reslut=="repeat"){
+                            alert("该用户名已存在");
+                        }else if(reslut=='success'){
+                            alert("注册成功");
+                            //注册成功后立即切换至登录表单,并记住用户名及密码;
+                            $("#form2").hide();
+                            $("#form1").show();
+                            $("#username").val($username);
+                            $("#pass").val($pass);
+                        }
+                        else{
+                            alert('false');
+                        }
+                    }
+                })
+            }return false;
+        })
+    })
+</script>
+<script type="text/javascript">
+    document.getElementById('getform2').onclick = function(){
+        document.getElementById('form1').style.display= 'none';
+        document.getElementById('form2').style.display= 'block';
+        return false;
+    }
+    document.getElementById('getform1').onclick = function(){
+        document.getElementById('form2').style.display= 'none';
+        document.getElementById('form1').style.display= 'block';
+        return false;
+    }
+
+</script>
+</body>
+</html>

@@ -1,0 +1,64 @@
+    <!DOCTYPE html>
+    <html>
+    <head lang="en">
+        <meta charset="UTF-8">
+        <title>即点即改</title>
+        <script src="jquery.min.js"></script>
+    </head>
+    <body>
+        <table border="1">
+            <tr height="50px">
+                <th>ID</th>
+                <th>name</th>
+                <th>vales</th>
+            </tr>
+            <tr height="50px">
+                <td>1</td>
+                <td><span onclick="test(this)">张三</span></td>
+                <td>人</td>
+            </tr>
+            <tr height="50px">
+                <td>2</td>
+                <td><span onclick="test(this)">张三</span></td>
+                <td>生</td>
+            </tr>
+            <tr height="50px">
+                <td>3</td>
+                <td><span onclick="test(this)">张三</span></td>
+                <td>难</td>
+            </tr>
+        </table>
+        <script src="./jquery.min.js"></script> 
+        <script type="text/javascript">
+            //即点即改的方法,
+            function test(obj) {
+                //获取该对象的值
+                var con = $(obj).html();
+                //获取该对象的父节点并替换为文本输入框s
+                $(document).on("click","span",function(){
+                    $(this).parent().html("<input type=\"text\" value=" + con + " />");
+                })
+                
+                //聚焦文本输入框
+                // $("input").focus();
+                //当移出时触发函数
+                $(document).on("blur", "input", function () {
+                    //获取文本输入框的值
+                    var a = $("input").val();
+                    //修改父元素为<span>标签，并把文本框的值传入并修改
+                    $(this).parent().html("<span class=\"click\">" + a + "</span>");
+                });
+            }
+
+//            $(document).on("click", ".click", function () {
+//                var con = $(this).html();
+//                $(this).parent().html("<input type=\"text\" value=" + con + " />");
+//                $("input").focus();
+//                $(document).on("blur", "input", function () {
+//                    var a = $("input").val();
+//                    $(this).parent().html("<span class=\"click\">" + a + "</span>");
+//                });
+//            });
+        </script>
+    </body>
+    </html>

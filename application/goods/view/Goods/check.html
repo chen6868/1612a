@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>查看商品</title>
+</head>
+<body>
+<a href="/goods/goods/add_show">添加商品</a>
+<center>
+    <h1>查看商品</h1>
+    <hr>
+    <table border="1 px solid black">
+        <thead>
+            <tr>
+                <th>商品名称</th>
+                <th>商品分类</th>
+                <th>添加商品规格</th>
+            </tr>
+        </thead>
+        {volist name="goods" id="s"}
+        <tr>
+            <td>{$s.name}</td>
+            <td>{$s.c_id}</td>
+            <td><a href="/goods/sku/add_show">添加商品规格</a></td>
+        </tr>
+        {/volist}
+    </table>
+</center>
+</body>
+</html>
