@@ -1,0 +1,71 @@
+
+$str = 'Hello world!';
+dump(strlen($str));
+// 字符串长度
+dump(strpos($str, 'world')); 
+// world 在字符串中第一次出现的位置 6 从零开始数
+ 
+dump(strripos($str, 'o'));
+// o 在字符串中最后一次出现的位置 7 从零开始数
+dump($arr = explode(' ', $str)); 
+// 将字符串根据 条件 处理成数组
+dump(implode(' | ', $arr)); 
+// 将数组根据 条件 处理成字符串
+dump(trim($str,'!')); 
+// 去除左右两边的 '!'
+dump(substr($str, 0, 5)); 
+// 截取字符串 从零开始
+dump(strtoupper($str)); 
+// 把字符串转换为大写
+dump(strtolower($str)); 
+// 把字符串转换为小写
+dump(ucfirst($str)); 
+// 把字符串中的首字符转换为大写
+dump(ucwords($str)); 
+// 把字符串中每个单词的首字符转换为大写
+dump(strrev($str)); 
+// 反转字符串
+dump(substr_replace('hello world!', 'tuhuan', 6)); 
+// 替换一部分字符 从那个位置开始
+ 
+// PHP 内置数组处理函数 
+dump(array()); 
+// 创建一个数组
+dump(range(0,9)); // 创建一个数组
+ 
+dump(array_keys($arr)); 
+// 返回数组中所有的键名
+dump(array_key_exists(1, $arr)); 
+// 检测键名是否存在于数组中 bool
+dump(array_flip($arr)); 
+// 交换数组中的键和值
+dump(array_merge($arr, ['one'])); 
+// 合并成为一个新的数组
+dump(array_rand($arr)); 
+// 随机在数组中取出一个键
+dump(array_reverse($arr)); 
+// 以相反的顺序返回数组
+dump(array_search('world!', $arr)); 
+// 搜索值返回键名
+dump(array_sum($arr)); 
+// 返回数组中值的和
+dump(array_unique($arr)); 
+// 删除数组中重复的值
+dump(array_values($arr)); 
+// 返回数组中所有的值
+dump(in_array('Hello', $arr)); 
+// 检查数组中是否存在指定的值
+
+// shuffle() 将数组打乱
+
+// sort() 对数组排序
+
+// rsort() 对数组逆向排序
+
+// ksort() 对数组键名排序
+
+// krsort() 对数组键名逆向排序
+
+// asort() 对关联数组按照键值进行升序排序
+
+// arsort() 对关联数组按照键值进行降序排序

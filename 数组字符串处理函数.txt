@@ -1,0 +1,71 @@
+array_chunk — 将一个数组分割成多个
+array_column — 返回数组中指定的一列
+array_combine — 创建一个数组，用一个数组的值作为其键名，另一个数组的值作为其值（另一种意义的合并数组）
+array_flip — 交换数组中的键和值
+array_key_exists — 检查数组里是否有指定的键名或索引
+array_key_first — Gets the first key of an array
+array_key_last — Gets the last key of an array
+array_keys — 返回数组中部分的或所有的键名
+array_merge — 合并一个或多个数组
+array_pop — 弹出数组最后一个单元（出栈）
+array_push — 将一个或多个单元压入数组的末尾（入栈）
+array_rand — 从数组中随机取出一个或多个单元
+array_reverse — 返回单元顺序相反的数组
+array_search — 在数组中搜索给定的值，如果成功则返回首个相应的键名
+array_shift — 将数组开头的单元移出数组
+array_slice — 从数组中取出一段
+array_sum — 对数组中所有值求和
+array_unique — 移除数组中重复的值
+array_unshift — 在数组开头插入一个或多个单元
+array_values — 返回数组中所有的值
+arsort — 对数组进行逆向排序并保持索引关系
+asort — 对数组进行排序并保持索引关系
+count — 计算数组中的单元数目，或对象中的属性个数
+current — 返回数组中的当前单元
+in_array — 检查数组中是否存在某个值
+krsort — 对数组按照键名逆向排序
+ksort — 对数组按照键名排序
+list — 把数组中的值赋给一组变量
+shuffle — 打乱数组
+sort — 对数组排序
+uasort — 使用用户自定义的比较函数对数组中的值进行排序并保持索引关联
+uksort — 使用用户自定义的比较函数对数组中的键名进行排序
+usort — 使用用户自定义的比较函数对数组中的值进行排序
+
+
+字符串处理函数 ，区别 mb_ 系列函数
+chunk_split — 将字符串分割成小块
+explode — 使用一个字符串分割另一个字符串
+implode — 将一个一维数组的值转化为字符串
+lcfirst — 使一个字符串的第一个字符小写
+ltrim — 删除字符串开头的空白字符（或其他字符）
+md5 — 计算字符串的 MD5 散列值
+money_format — 将数字格式化成货币字符串
+nl2br — 在字符串所有新行之前插入 HTML 换行标记
+number_format — 以千位分隔符方式格式化一个数字
+ord — 返回字符的 ASCII 码值
+rtrim — 删除字符串末端的空白字符（或者其他字符）
+str_replace — 子字符串替换
+str_ireplace — str_replace 的忽略大小写版本
+str_repeat — 重复一个字符串
+str_shuffle — 随机打乱一个字符串
+str_split — 将字符串转换为数组
+stripos — 查找字符串首次出现的位置（不区分大小写）
+strpos — 查找字符串首次出现的位置
+strstr — 查找字符串的首次出现
+stristr — strstr 函数的忽略大小写版本
+strlen — 获取字符串长度
+strrchr — 查找指定字符在字符串中的最后一次出现
+strrev — 反转字符串
+strripos — 计算指定字符串在目标字符串中最后一次出现的位置（不区分大小写）
+strrpos — 计算指定字符串在目标字符串中最后一次出现的位置
+strtok — 标记分割字符串
+strtolower — 将字符串转化为小写
+strtoupper — 将字符串转化为大写
+substr_count — 计算字串出现的次数
+substr_replace — 替换字符串的子串
+substr — 返回字符串的子串
+trim — 去除字符串首尾处的空白字符（或者其他字符）
+ucfirst — 将字符串的首字母转换为大写
+ucwords — 将字符串中每个单词的首字母转换为大写
+wordwrap — 打断字符串为指定数量的字串
