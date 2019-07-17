@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<script src="__PUBLIC__/jquery-3.1.1.min.js"></script>
+	<title>主菜单</title>
+</head>
+<body>
+	<ul>
+	<volist name="data" id="vo">
+	    <eq name="vo.leve1" value="1">
+		<li class="leve{$vo.leve1}">{$vo.powername}</li>
+		<else/>
+		<li class="leve{$vo.leve1}">-<a href="__MODULE__/{$vo.controller}/{$vo.action}">-{$vo.powername}</a></li>
+		</eq>
+	</volist>
+	</ul>
+	<script>
+       $('ul li.leve1').click(function(){
+       	 $(this).nextUntil('li.leve1').toggle();
+       })
+	</script>
+</body>
+</html>

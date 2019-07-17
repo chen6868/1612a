@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<script src="__PUBLIC__/jquery-3.1.1.min.js"></script>
+	<title>登录</title>
+</head>
+<body>
+	<center>
+		<table>
+			<tr>
+				<td>管理员账号</td>
+				<td><input type="text" class="name"></td>
+			</tr>
+			<tr>
+				<td>管理员密码</td>
+				<td><input type="text" class="pwd"></td>
+			</tr>
+			<tr>
+				<td><button class="deng">登录</button></td>
+				<td></td>
+			</tr>
+		</table>
+	</center>
+	<script>
+       $('.deng').click(function(){
+       	  name = $('.name').val();
+       	  pwd  = $('.pwd').val();
+       	  $.get('__URL__/yan',{name:name,pwd:pwd},function(data){
+       	  	 if (data==1) {
+       	  	 	location.href="__MODULE__/Welcome/index";
+       	  	 	alert("登录成功");
+       	  	 }else{
+       	  	 	alert("登录失败");
+       	  	 }
+       	  })
+       })
+	</script>
+</body>
+</html>
